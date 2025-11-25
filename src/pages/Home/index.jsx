@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import './style.css'
 import Img from '../../assets/obito.svg'
 import api from '../../services/api.js'
@@ -6,6 +6,12 @@ import api from '../../services/api.js'
 
 function Home() {
 const [users, setUsers] = useState([])
+
+
+const inputNome = useRef()
+const inputEmail = useRef()
+
+
 
   async function getUsers() {
 
@@ -22,8 +28,8 @@ const [users, setUsers] = useState([])
     <div className='container'>
       <form>
         <h1>Cadastro</h1>
-        <input placeholder='Nome' name='nome' type='text' />
-        <input placeholder='Email' email='email' type='email' />
+        <input placeholder='Nome' name='nome' type='text' ref={inputNome}/>
+        <input placeholder='Email' email='email' type='email' ref={inputEmail}/>
         <button type='button'>Cadastrar</button>
       </form>
 
