@@ -24,6 +24,8 @@ function Home() {
       nome: inputNome.current.value,
       email: inputEmail.current.value
     })
+
+    getUsers()
     
   }
 
