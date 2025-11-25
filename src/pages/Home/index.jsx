@@ -26,7 +26,14 @@ function Home() {
     })
 
     getUsers()
-    
+
+  }
+
+  async function deleteUsers(id) {
+    await api.delete(`/aluno/${id}`);
+
+
+    getUsers();
   }
 
   useEffect(() => {
@@ -44,12 +51,14 @@ function Home() {
       </form>
 
       {users.map(user => (
-        <div className='card'>
+        console.log("estrutura do user",user),
+        <div key={user.alunoId} className='card'>
           <div>
+            <p>ID DO USER NO MAP: {user.alunoId}</p>
             <p>Nome: <span>{user.nome}</span></p>
             <p>Email: <span>{user.email}</span></p>
           </div>
-          <button>
+          <button onClick={() => deleteUsers(user.alunoId)}>
             <img src={Img} width='200' height='200' />
           </button>
         </div>
